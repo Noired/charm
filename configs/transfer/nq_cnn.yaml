@@ -1,0 +1,20 @@
+- 
+  name: "NQ -> CNN"
+  threshold: 0.05
+  data: ./data/cnn-llama-2-7b-chat-05__24_28_32_42
+  charms:
+    - charm_nq_0.pt
+    - charm_nq_1.pt
+    - charm_nq_2.pt
+  lb: lb_nq.pkl
+  act: act_nq.pkl
+- 
+  name: "CNN -> NQ"
+  threshold: 0.05
+  data: ./data/nq-llama-2-7b-chat-05__24_28_32_42
+  charms:
+    - charm_cnn_0.pt
+    - charm_cnn_1.pt
+    - charm_cnn_2.pt
+  lb: lb_cnn.pkl
+  act: act_cnn.pkl

@@ -1,0 +1,58 @@
+# Data and task configuration
+data: "./data/cnn-llama-2-7b-chat-05__24_28_32_42"
+tokenwise: true
+disable_marks: true
+mark_prompt_nodes: false
+mark_start_prompt: false
+mark_prompt_edges: true
+attention_threshold: 0.05
+llm_layers: "all" 
+
+# Training configuration
+num_epochs: 75
+patience: 20
+learning_rate: 0.001
+scheduler: "plateau"
+balance: false
+batch_size: 32
+eval_prebatch: true
+train_prebatch: false
+train_prebatch_interval: 10  # NOTE: Irrelevant given line above
+
+# Regularisation hypers
+dropout_rate: 0.5
+weight_decay: 0.0
+weight_decay_target: "attr_encoders.act"
+weight_decay_for_target: 0.001  # NOTE: This has no effect if we do not use activations
+
+# Architectural hypers
+hidden_dim: 64
+num_layers: 3
+flow: "source_to_target"
+readout: "mean"  # NOTE: This has no effect if the task is tokenwise
+aggr: "mean"
+activation: "none"
+layer: "custom"
+encoder: "linear"
+batch_norm: "no"
+residual: "no"
+attr_encoder_location: "beginning"  # NOTE: This has no effect if we do not use activations
+cat_attr: "no"
+
+# Additional artefacts
+on_x: true
+# -- white box   
+acts: ""
+act_llm_layers: "24"
+
+# Logging
+log: false
+verbose: false
+
+# Checkpointing
+checkpoint_folder: './checkpoints'
+checkpoint_best: true
+
+# Training with data on disk
+dump_data_only: false
+on_disk: false

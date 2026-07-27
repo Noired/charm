@@ -1,0 +1,137 @@
+atp:
+  - 
+    seed: 42
+    data: "movies-mistral-7b-i-05__24_28_32_42"
+    tokenwise: false
+    pooling: 'min'
+    response_only: true
+    verbose: false
+    log: false
+  - 
+    seed: 42
+    data: "movies-mistral-7b-i-05__24_28_32_42"
+    tokenwise: false
+    pooling: 'mean'
+    response_only: false
+    verbose: false
+    log: false
+lc:
+  - 
+    seed: 42
+    data: "movies-mistral-7b-i-05__24_28_32_42"
+    llm_layers: "23"
+    attention_threshold: 0.05
+    verbose: false
+    log: false
+  -
+    seed: 42
+    data: "movies-mistral-7b-i-05__24_28_32_42"
+    llm_layers: "27"
+    attention_threshold: 0.05
+    verbose: false
+    log: false
+  - 
+    seed: 42
+    data: "movies-mistral-7b-i-05__24_28_32_42"
+    llm_layers: "31"
+    attention_threshold: 0.05
+    verbose: false
+    log: false
+lc++:
+  - 
+    seed: 42
+    data: "movies-mistral-7b-i-05__24_28_32_42"
+    llm_layers: "23"
+    attention_threshold: 0.05
+    C: 0.01
+    balance: false
+    verbose: false
+    log: false
+  -
+    seed: 42
+    data: "movies-mistral-7b-i-05__24_28_32_42"
+    llm_layers: "27"
+    attention_threshold: 0.05
+    C: 0.1
+    balance: false
+    verbose: false
+    log: false
+  - 
+    seed: 42
+    data: "movies-mistral-7b-i-05__24_28_32_42"
+    llm_layers: "31"
+    attention_threshold: 0.05
+    C: 100
+    balance: false
+    verbose: false
+    log: false
+lapeig:
+  - 
+    seed: 42
+    data: "movies-mistral-7b-i-05__24_28_32_42"
+    attention_threshold: 0.05
+    topk: 20
+    verbose: false
+    log: false
+act:
+  - 
+    seed: 42
+    data: "movies-mistral-7b-i-05__24_28_32_42"
+    tokenwise: false
+    llm_layers: '24'
+    C: 0.01
+    pooling: '0'
+    balance: false
+    checkpoint: false
+    verbose: false
+    log: false
+  - 
+    seed: 42
+    data: "movies-mistral-7b-i-05__24_28_32_42"
+    tokenwise: false
+    llm_layers: '28'
+    C: 0.01
+    pooling: '0'
+    balance: false
+    checkpoint: false
+    verbose: false
+    log: false
+  - 
+    seed: 42
+    data: "movies-mistral-7b-i-05__24_28_32_42"
+    tokenwise: false
+    llm_layers: '32'
+    C: 0.00001
+    pooling: '0'
+    balance: false
+    checkpoint: false
+    verbose: false
+    log: false
+node_avg:
+  - 
+    seed: 42
+    data: "movies-mistral-7b-i-05__24_28_32_42"
+    tokenwise: false
+    baseline: node_averaging
+    attention_threshold: 0.05
+    llm_layers: 'all'
+    C: 100
+    pooling: 'mean'
+    balance: false
+    checkpoint: false
+    verbose: false
+    log: false
+edge_avg:
+  - 
+    seed: 42
+    data: "movies-mistral-7b-i-05__24_28_32_42"
+    tokenwise: false
+    baseline: edge_averaging
+    attention_threshold: 0.05
+    llm_layers: 'all'
+    C: 0.1
+    pooling: 'mean'
+    balance: false
+    checkpoint: false
+    verbose: false
+    log: false

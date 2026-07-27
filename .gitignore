@@ -1,0 +1,39 @@
+# Data folders
+raw_data
+data
+
+# PyTest
+.pytest_cache
+
+# Log
+wandb
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Logs and local configs
+*.log
+*.env
+*.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# System files
+Thumbs.db
+.DS_Store

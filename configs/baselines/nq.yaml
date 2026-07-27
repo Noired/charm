@@ -1,0 +1,93 @@
+atp:
+  - 
+    seed: 42
+    data: nq-llama-2-7b-chat-05__24_28_32_42
+    tokenwise: true
+    pooling: 'none'
+    response_only: true
+    verbose: false
+    log: false
+act:
+  - 
+    seed: 42
+    data: nq-llama-2-7b-chat-05__24_28_32_42
+    tokenwise: true
+    llm_layers: '24'
+    C: 0.0001
+    pooling: 'none'
+    balance: false
+    checkpoint: false
+    verbose: false
+    log: false
+  - 
+    seed: 42
+    data: nq-llama-2-7b-chat-05__24_28_32_42
+    tokenwise: true
+    llm_layers: '28'
+    C: 0.0001
+    pooling: 'none'
+    balance: false
+    checkpoint: false
+    verbose: false
+    log: false
+  - 
+    seed: 42
+    data: nq-llama-2-7b-chat-05__24_28_32_42
+    tokenwise: true
+    llm_layers: '32'
+    C: 0.0001
+    pooling: 'none'
+    balance: false
+    checkpoint: false
+    verbose: false
+    log: false
+lb:
+  - 
+    seed: 42
+    data: nq-llama-2-7b-chat-05__24_28_32_42
+    tokenwise: true
+    C: 1.0
+    pooling: 'none'
+    balance: false
+    checkpoint: false
+    verbose: false
+    log: false
+lb++:
+  - 
+    seed: 42
+    data: nq-llama-2-7b-chat-05__24_28_32_42
+    tokenwise: true
+    C: 0.01
+    pooling: 'none'
+    balance: false
+    checkpoint: false
+    verbose: false
+    log: false
+node_avg:
+  - 
+    seed: 42
+    data: nq-llama-2-7b-chat-05__24_28_32_42
+    tokenwise: true
+    baseline: node_averaging
+    attention_threshold: 0.05
+    llm_layers: 'all'
+    C: 0.1
+    pooling: 'none'
+    balance: false
+    checkpoint: false
+    verbose: false
+    log: false
+edge_avg:
+  - 
+    seed: 42
+    data: nq-llama-2-7b-chat-05__24_28_32_42
+    tokenwise: true
+    baseline: edge_averaging
+    attention_threshold: 0.05
+    llm_layers: 'all'
+    C: 100
+    pooling: 'none'
+    balance: false
+    checkpoint: false
+    verbose: false
+    log: false

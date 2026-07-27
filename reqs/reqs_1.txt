@@ -1,0 +1,7 @@
+numpy==1.26.2
+scipy==1.13.1
+tiktoken==0.9.0
+editdistance==0.8.1
+scikit-learn==1.6.1
+accelerate==1.4.0
+matplotlib==3.9.4

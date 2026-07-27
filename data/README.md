@@ -1,0 +1,1 @@
+This is just a gitignored folder where you can conveniently store the data.
