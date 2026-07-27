@@ -1,5 +1,10 @@
-# Ref: https://github.com/voidism/Lookback-Lens/blob/main/step01_extract_attns.py
-# Original ref: https://github.com/kojima-takeshi188/zero_shot_cot
+# ---------------------------------------------------------------------------
+# Portions of this file are adapted from the Lookback Lens project:
+#   https://github.com/voidism/Lookback-Lens
+# Lookback Lens declares the MIT License in its README (no root LICENSE file).
+# Adapted in good faith under those stated terms, with modifications by the
+# CHARM authors. See PROVENANCE.md.
+# ---------------------------------------------------------------------------
 
 import os
 import json

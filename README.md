@@ -1,4 +1,4 @@
-# CHARM
+# Neural Message-Passing on Attention Graphs for Hallucination Detection
 
 ![CHARM](charm.png)
 
@@ -76,8 +76,77 @@ pip install wandb==0.20.1
 pip install matplotlib==3.10.5
 ```
 
-## Preliminaries
-[WIP]
+## Preliminaries: getting the raw data
+
+> **On data redistribution.** We do **not** ship the source datasets in this repository. They belong to their original authors and remain available under those projects' own licenses. To rebuild our datasets from scratch, download the raw files below from their original sources and place them under `raw_data/`. Every file's origin and license is documented in [`DATA_PROVENANCE.md`](DATA_PROVENANCE.md); by downloading them you agree to the terms of each upstream dataset.
+
+The raw inputs come from two upstream projects.
+
+### NQ and CNN from [Lookback Lens](https://github.com/voidism/Lookback-Lens)
+
+Run the following commands for the raw input data.
+
+```bash
+LB=https://raw.githubusercontent.com/voidism/Lookback-Lens/master/data
+
+# NQ raw input (gzipped upstream — decompress on download, don't keep the .gz)
+curl -sL $LB/nq-open-10_total_documents_gold_at_4.jsonl.gz \
+    | gunzip > raw_data/nq-open-10_total_documents_gold_at_4.jsonl
+
+# CNN raw input
+wget -P raw_data/ $LB/cnndm-1000.jsonl
+```
+
+We also need annotation files and additional data that can be obtained by downloading the [precomputed bundle the Lookback Lens authors provide](https://www.dropbox.com/scl/fi/a87iv6xw9xma6ppc5pw2h/step1and2.tar.bz?rlkey=j382rsrwu2wnfwj7sn14ai3qw&dl=0). Download it and unzip it. You will obtain a folder named `dump`; place its content directly in `raw_data/`.
+
+The following should do this if you prefer the command line.
+```bash
+# note: dl=1 forces a direct download instead of the Dropbox preview page
+wget -O step1and2.tar.bz "https://www.dropbox.com/scl/fi/a87iv6xw9xma6ppc5pw2h/step1and2.tar.bz?rlkey=j382rsrwu2wnfwj7sn14ai3qw&dl=1"
+tar -xjf step1and2.tar.bz
+mv dump/* raw_data/
+rm -rf dump step1and2.tar.bz
+```
+
+### Movies, Winobias, Math — from [LLMs Know What They Know](https://github.com/technion-cs-nlp/LLMsKnow)
+
+Run the following commands.
+
+```bash
+LK=https://raw.githubusercontent.com/technion-cs-nlp/LLMsKnow/main/data
+
+for f in \
+  movie_qa_train.csv \
+  movie_qa_test.csv \
+  winobias_dev.csv \
+  winobias_test.csv \
+  AnswerableMath.csv \
+  AnswerableMath_test.csv ; do
+    wget -P raw_data/ "$LK/$f"
+done
+```
+
+### Expected `raw_data/` layout
+
+After the steps above, `raw_data/` should contain:
+
+```
+raw_data/
+├── nq-open-10_total_documents_gold_at_4.jsonl   # Lookback Lens
+├── cnndm-1000.jsonl                             # Lookback Lens
+├── anno-nq-7b.jsonl                             # Lookback Lens (precomputed / step02)
+├── anno-cnndm-7b.jsonl                          # Lookback Lens (precomputed / step02)
+├── lookback-ratio-nq-7b.pt                      # Lookback Lens (precomputed / step02)
+├── lookback-ratio-cnndm-7b.pt                   # Lookback Lens (precomputed / step02)
+├── movie_qa_train.csv                           # LLMsKnow
+├── movie_qa_test.csv                            # LLMsKnow
+├── winobias_dev.csv                             # LLMsKnow
+├── winobias_test.csv                            # LLMsKnow
+├── AnswerableMath.csv                           # LLMsKnow
+└── AnswerableMath_test.csv                      # LLMsKnow
+```
+
+Once these files are in place, proceed to Data preparation below to build the datasets.
 
 ## Data preparation
 
@@ -86,6 +155,26 @@ pip install matplotlib==3.10.5
 Follow these steps to create the `NQ` and `CNN` datasets by yourself.
 
 N.B.: Use environment `charm_data_1`.
+
+#### Generate teacher forcing data ...
+
+... by running these commands below:
+
+*nq*
+
+```
+python -m data_prep_1.data_teacher_forcing \
+    --dump_path raw_data/lookback-ratio-nq-7b.pt \
+    --tf_path raw_data/tf-nq-7b.jsonl
+```
+
+*cnn*
+
+```
+python -m data_prep_1.data_teacher_forcing \
+    --dump_path raw_data/lookback-ratio-cnndm-7b.pt \
+    --tf_path raw_data/tf-cnn-7b.jsonl
+```
 
 #### Extract neural artefacts (and extract graphs)
 

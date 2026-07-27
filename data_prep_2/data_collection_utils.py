@@ -1,4 +1,9 @@
-# Ref: https://github.com/technion-cs-nlp/LLMsKnow
+# ---------------------------------------------------------------------------
+# Portions of this file are adapted from "LLMs Know What They Know" (LLMsKnow):
+#   https://github.com/technion-cs-nlp/LLMsKnow
+# Copyright (c) 2024 technion-cs-nlp. Licensed under the MIT License.
+# Modifications by the CHARM authors. See PROVENANCE.md.
+# ---------------------------------------------------------------------------
 
 import os
 import unicodedata

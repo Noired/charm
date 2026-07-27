@@ -1,4 +1,10 @@
-# Ref: https://github.com/voidism/Lookback-Lens/blob/main/step03_lookback_lens.py
+# ---------------------------------------------------------------------------
+# Portions of this file are adapted from the Lookback Lens project:
+#   https://github.com/voidism/Lookback-Lens
+# Lookback Lens declares the MIT License in its README (no root LICENSE file).
+# Adapted in good faith under those stated terms, with modifications by the
+# CHARM authors. See PROVENANCE.md.
+# ---------------------------------------------------------------------------
 
 import argparse
 import os

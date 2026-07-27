@@ -1,4 +1,11 @@
-# Reference: https://github.com/lm-sys/FastChat
+# ---------------------------------------------------------------------------
+# This file is adapted from the Lookback Lens project:
+#   https://github.com/voidism/Lookback-Lens
+# Lookback Lens declares the MIT License in its README (no root LICENSE file).
+# Adapted in good faith under those stated terms, with modifications by the
+# CHARM authors. See PROVENANCE.md.
+# ---------------------------------------------------------------------------
+
 
 import torch
 import torch.nn.functional as F
