@@ -78,7 +78,7 @@ pip install matplotlib==3.10.5
 
 ## Preliminaries: getting the raw data
 
-> **On data redistribution.** We do **not** ship the source datasets in this repository. They belong to their original authors and remain available under those projects' own licenses. To rebuild our datasets from scratch, download the raw files below from their original sources and place them under `raw_data/`. Every file's origin and license is documented in [`PROVENANCE.md`](PROVENANCE.md); by downloading them you agree to the terms of each upstream dataset.
+> **On data redistribution.** We do **not** ship the source datasets in this repository. They belong to their original authors and remain available under those projects' own licenses. To rebuild our datasets from scratch, we download the raw files below from their original sources and place them under `raw_data/`. Every file's origin and license is documented in [`PROVENANCE.md`](PROVENANCE.md); by downloading them you agree to the terms of each upstream dataset.
 
 The raw inputs come from two upstream projects.
 
